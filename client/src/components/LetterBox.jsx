@@ -5,9 +5,9 @@ function LetterBox(props) {
     const {letter, result} = props;
 
     const resultClasses = {
-        0: "letter-box",
-        1: "letter-box yellow",
-        2: "letter-box green"
+        1: "letter-box grey",
+        2: "letter-box yellow",
+        3: "letter-box green"
     };
 
 

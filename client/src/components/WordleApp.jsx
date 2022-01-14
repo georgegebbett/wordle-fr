@@ -46,20 +46,19 @@ function WordleApp() {
 
         let resultObj = {letters: [], result: []};
         for (let i = 0; i < currentGuess.letters.length; i++) {
-            console.log(`Guess letter: ${currentGuess.letters[i]} Word letter: ${word.splitWord[i]}`);
             if (currentGuess.letters[i] === word.splitWord[i]) {
                 resultObj.letters.push(currentGuess.letters[i]);
-                resultObj.result.push(2);
+                resultObj.result.push(3);
             } else if (word.splitWord.includes(currentGuess.letters[i])) {
                 resultObj.letters.push(currentGuess.letters[i]);
-                resultObj.result.push(1);
+                resultObj.result.push(2);
             } else {
                 resultObj.letters.push(currentGuess.letters[i]);
-                resultObj.result.push(0);
+                resultObj.result.push(1);
             }
         }
 
-        if (resultObj.result.reduce((pv, cv) => pv + cv) === 10) {
+        if (resultObj.result.reduce((pv, cv) => pv + cv) === 15) {
             setComplete(true);
             setSuccess(true);
         }
