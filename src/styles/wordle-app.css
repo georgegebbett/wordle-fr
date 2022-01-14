@@ -1,0 +1,26 @@
+.wordle-app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.keyboard {
+    align-self: flex-end;
+    padding-bottom: 5vh;
+
+}
+
+.default {
+    background-color: darkgray;
+    color: black;
+}
+
+.yellow {
+    background-color: yellow;
+    color: white;
+}
+
+.green {
+    background-color: forestgreen;
+    color: white;
+}
