@@ -1,0 +1,48 @@
+.modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: xx-large;
+    border-bottom: 1px solid #282c34;
+}
+
+.modal-body {
+    padding-top: 3vh;
+    text-align: center;
+    font-size: large;
+}
+
+
+.score-hero {
+    font-size: 2rem;
+}
+
+.score-hero-score {
+    color: forestgreen;
+    font-size: 5rem;
+}
+
+.share-button {
+    background-color: forestgreen;
+    border-radius: 5px;
+    color: white;
+    width: 25vw;
+    height: 5vh;
+    font-size: large;
+}
+
+
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

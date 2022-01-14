@@ -5,6 +5,11 @@ import Keyboard from "./Keyboard";
 
 import "../styles/wordle-app.css";
 
+import JSConfetti from "js-confetti";
+import ScoreModal from "./ScoreModal";
+const jsConfetti = new JSConfetti();
+
+
 const {useEffect} = require("react");
 const axios = require("axios");
 
@@ -21,11 +26,12 @@ function WordleApp() {
     const [currentGuess, setCurrentGuess] = useState({number: 0, letters: []});
     const [complete, setComplete] = useState(false);
     const [success, setSuccess] = useState(false);
+    const [modalOpen, setModalOpen] = useState(false);
 
     useEffect(() => {
         const getWord = async () => {
             const {data} = await axios.get("/api/word");
-            setWord({word: data.todaysWord, splitWord: data.todaysWord.split("")});
+            setWord({word: data.todaysWord, splitWord: data.todaysWord.split(""), number: data.puzzleNumber});
         }
         getWord()
     }, [])
@@ -34,9 +40,15 @@ function WordleApp() {
         if (complete === false) return;
         if (success) {
             console.log("Yay!");
+            jsConfetti.addConfetti({
+                confettiRadius: 6,
+                confettiNumber: 500,
+            });
+
         } else {
             console.log("Oh no :(");
         }
+        setModalOpen(true);
     }, [complete])
 
     const evaluateGuess = () => {
@@ -95,7 +107,17 @@ function WordleApp() {
 
     return (
         <div className="wordle-app">
-            <HeaderBar/>
+            <HeaderBar
+                openScoreModal={() => setModalOpen(true)}
+            />
+            <ScoreModal
+                isOpen={modalOpen}
+                success={success}
+                onRequestClose={()=> setModalOpen(false)}
+                guesses={guesses}
+                complete={complete}
+                puzzleNo={word.number}
+            />
             <GuessBox
                 guesses={guesses}
                 currentGuess={currentGuess}

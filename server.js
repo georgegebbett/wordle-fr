@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors")
 const path = require("path");
+const axios = require("axios");
+const {response} = require("express");
 
 
 const PORT = process.env.PORT || 3001;
@@ -8,8 +10,10 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 
-const puzzleNumber = 0;
+const puzzleNumber = 1;
 const todaysWord = "MANGE";
+
+
 
 
 app.use(express.json());
@@ -19,6 +23,11 @@ app.use(express.static('build'));
 app.get("/api/word", ((req, res) => {
     res.json({puzzleNumber, todaysWord})
 }))
+
+app.get("/api/isValidWord", async (req, res) => {
+    console.log(req.body.word);
+    dictRes = axios.get()
+})
 
 if (process.env.NODE_ENV === 'production') {
     // Serve any static files
