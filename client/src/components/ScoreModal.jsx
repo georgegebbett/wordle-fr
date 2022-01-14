@@ -37,7 +37,15 @@ export default function ScoreModal(props) {
 
     const generateEmojiBlock = () => {
 
-        let emojiBlock = `Wordle FR - #${puzzleNo} - ${guesses.length}/6\n\n`;
+        let guessStr;
+
+        if (guesses.length === 6) {
+            guessStr = "X";
+        } else {
+            guessStr = guesses.length;
+        }
+
+        let emojiBlock = `Wordle FR - #${puzzleNo} - ${guessStr}/6\n\n`;
 
         for (let guess of guesses) {
             for (let guessItem of guess.result) {

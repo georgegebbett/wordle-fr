@@ -69,6 +69,8 @@ function WordleApp() {
             }
         }
 
+        setGuesses([...guesses, resultObj]);
+
         if (resultObj.result.reduce((pv, cv) => pv + cv) === 15) {
             setComplete(true);
             setSuccess(true);
@@ -79,7 +81,6 @@ function WordleApp() {
             return;
         }
 
-        setGuesses([...guesses, resultObj]);
         setCurrentGuess({number: currentGuess.number + 1, letters: []});
     }
 
