@@ -11,7 +11,7 @@ const app = express();
 
 
 const puzzleNumber = 1;
-const todaysWord = "MANGE";
+const todaysWord = "JOUET";
 
 
 

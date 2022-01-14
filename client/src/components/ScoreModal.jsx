@@ -3,7 +3,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/modal.css";
-import {config} from "@fortawesome/fontawesome-svg-core";
+
+function copyToClipboard(text) {
+    const input = document.createElement('textarea');
+    input.style.position = 'fixed';
+    input.style.opacity = 0;
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('Copy');
+    document.body.removeChild(input);
+}
 
 export default function ScoreModal(props) {
 
@@ -46,10 +56,18 @@ export default function ScoreModal(props) {
             emojiBlock += "\n";
         }
 
-        emojiBlock += "(c) George Gebbett";
+        emojiBlock = emojiBlock.trim();
         console.log(emojiBlock);
 
-        navigator.share({text: emojiBlock});
+
+        try {
+            navigator.share({text: emojiBlock})
+                .catch(() => {
+                    copyToClipboard(emojiBlock);
+                })
+        } catch (e) {
+            copyToClipboard(emojiBlock);
+        }
     }
 
     return (
