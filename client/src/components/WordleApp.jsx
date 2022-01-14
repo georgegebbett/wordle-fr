@@ -5,7 +5,6 @@ import Keyboard from "./Keyboard";
 
 import "../styles/wordle-app.css";
 
-const PropTypes = require("prop-types");
 const {useEffect} = require("react");
 const axios = require("axios");
 
@@ -84,6 +83,16 @@ function WordleApp() {
         return false;
     }
 
+    const removeLastLetterFromCurrentGuess = () => {
+        if (currentGuess.letters.length === 0) return false;
+
+        setCurrentGuess({
+            ...currentGuess,
+            letters: currentGuess.letters.slice(0, -1)
+        })
+
+    }
+
     return (
         <div className="wordle-app">
             <HeaderBar/>
@@ -94,6 +103,7 @@ function WordleApp() {
             <Keyboard
                 layout={GB_KEYBOARD}
                 appendLetter={appendLetterToCurrentGuess}
+                backspace={removeLastLetterFromCurrentGuess}
                 evaluateGuess={evaluateGuess}
             />
         </div>

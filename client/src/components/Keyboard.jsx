@@ -5,7 +5,7 @@ const PropTypes = require("prop-types");
 
 function Keyboard(props) {
 
-    const {layout, appendLetter, evaluateGuess} = props;
+    const {layout, appendLetter, evaluateGuess, backspace} = props;
 
     return (
         <div className="keyboard">
@@ -15,6 +15,7 @@ function Keyboard(props) {
                     key={row}
                     appendLetter={appendLetter}
                     evaluateGuess={evaluateGuess}
+                    backspace={backspace}
                 />
             ))}
         </div>
@@ -25,7 +26,8 @@ function Keyboard(props) {
 Keyboard.propTypes = {
     layout: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
     appendLetter: PropTypes.func,
-    evaluateGuess: PropTypes.func
+    evaluateGuess: PropTypes.func,
+    backspace: PropTypes.func
 }
 
 export default Keyboard;

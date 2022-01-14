@@ -4,7 +4,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 const PropTypes = require("prop-types");
 
 function KeyboardKey(props) {
-    const {character, appendLetter, evaluateGuess} = props;
+    const {character, appendLetter, evaluateGuess, backspace} = props;
 
     const getKey = (char) => {
         switch (char) {
@@ -16,7 +16,7 @@ function KeyboardKey(props) {
                 );
             case "BSPACE":
                 return (
-                    <div className="keyboard-key">
+                    <div className="keyboard-key" onClick={backspace}>
                         <FontAwesomeIcon icon={faBackspace}/>
                     </div>
                 );
@@ -39,7 +39,8 @@ function KeyboardKey(props) {
 KeyboardKey.propTypes = {
     character: PropTypes.string,
     appendLetter: PropTypes.func,
-    evaluateGuess: PropTypes.func
+    evaluateGuess: PropTypes.func,
+    backspace: PropTypes.func
 };
 
 export default KeyboardKey;
