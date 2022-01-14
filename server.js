@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors")
 const path = require("path");
 const axios = require("axios");
-const {response} = require("express");
 
 
 const PORT = process.env.PORT || 3001;
@@ -26,7 +25,6 @@ app.get("/api/word", ((req, res) => {
 
 app.get("/api/isValidWord", async (req, res) => {
     console.log(req.body.word);
-    dictRes = axios.get()
 })
 
 if (process.env.NODE_ENV === 'production') {

@@ -1,4 +1,3 @@
-import {Fragment} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faQuestionCircle, faAward, faCogs } from "@fortawesome/free-solid-svg-icons";
 

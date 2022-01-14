@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-import ReportWebVitals from "./reportWebVitals";
 import WordleApp from "./components/WordleApp";
 
 function App() {
