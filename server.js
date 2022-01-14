@@ -13,6 +13,7 @@ const todaysWord = "MANGE";
 
 
 app.use(express.json());
+app.use(cors());
 app.use(express.static('build'));
 
 app.get("/api/word", ((req, res) => {
